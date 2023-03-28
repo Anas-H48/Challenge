@@ -1,0 +1,148 @@
+:root {
+    --main-purple-color: #5c48f1;
+    --elements-background-color: #eeecfd;
+    --element-border-color: #e0e0e1;
+}
+
+.container {
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.parent {
+    display: grid;
+    background-color: rgb(248, 248, 248);
+    grid-template-columns: repeat(4 ,1fr);
+    grid-template-rows: repeat(5 ,1fr);
+    gap: 5px;
+}
+
+.parent span:first-child {
+    padding: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+    text-align: center;
+    grid-column: 1/5;
+    grid-row: 1/1;
+    color: var(--main-purple-color);
+    background-color: var(--elements-background-color);
+}
+.parent > div {
+    border-radius: 5px;
+    position: relative;
+    grid-column: span 1;
+    grid-row: span 2;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding: 20px;
+    background-color: white;
+    border: 2px solid var(--element-border-color);
+}
+
+.parent > div input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.parent > div .box {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 5px;
+    left: 5px;
+    width: 17px;
+    height: 17px;
+    border: 2px solid #888;
+    border-radius: 5px;
+    z-index: 2;
+
+}
+
+.parent > div .box .checkmark {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    background-color: transparent;
+}
+
+
+.parent > div .box:hover {
+    border-color: var(--main-purple-color);
+}
+
+.parent > div .box:hover .checkmark {
+    background-color: var(--element-border-color);
+
+}
+
+.parent > div input:checked + .box {
+    border-color: var(--main-purple-color);
+}
+
+.checkmark::after {
+    content: "";
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background-color: var(--main-purple-color);
+    border-radius: 2px;
+    display: none;
+}
+
+.parent > div input:checked + .box .checkmark::after {
+    display: block;
+    z-index: 1;
+}
+
+
+.parent > div .icon i {
+    position: absolute;
+    color: var(--main-purple-color);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% ,-50%);
+    z-index: 2;
+}
+
+.parent > div .icon p {
+    position: absolute;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+    bottom: 1%;
+    left: 50%;
+    transform: translate(-50% ,1%);
+    z-index: 2;
+
+}
+
+.parent > div .icon  span {
+    display: none;
+    border-radius: 5px;
+    border: 2px solid var(--main-purple-color);
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: -1px;
+    left: -1px;
+    width: 100%;
+    height: 100%;
+}
+
+.parent > div input:checked ~ .icon  span {
+    display: block;
+}
